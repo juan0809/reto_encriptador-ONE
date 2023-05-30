@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Encriptador reto one</title>
+    <title>Encriptador y Desencriptador de Texto</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -21,35 +21,126 @@
             text-align: center;
         }
         
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
         textarea {
             width: 300px;
             height: 100px;
+            margin-bottom: 10px;
         }
         
         #resultado {
-            margin-top: 20px;
             font-weight: bold;
             color: #000000;
+            margin-bottom: 10px;
+        }
+        
+        .btn-group {
+            display: flex;
+        }
+        
+        .btn-group .btn {
+            margin-right: 10px;
+        }
+        
+        #encriptar {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        #desencriptar {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        #copiar {
+            background-color: #007bff;
+            color: white;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function encriptarTexto() {
-            var texto = document.getElementById("texto").value;
-            var textoEncriptado = btoa(texto); // Utilizamos la función btoa para encriptar el texto en Base64
+        $(document).ready(function() {
+            function encriptarTexto() {
+                var texto = $("#texto").val();
+                var textoEncriptado = encriptar(texto);
+                
+                $("#resultado").text("Texto encriptado:");
+                $("#textoEncriptado").val(textoEncriptado);
+            }
             
-            document.getElementById("resultado").innerText = "Texto encriptado: " + textoEncriptado;
-        }
+            function desencriptarTexto() {
+                var textoEncriptado = $("#texto").val();
+                var textoDesencriptado = desencriptar(textoEncriptado);
+                
+                $("#resultado").text("Texto desencriptado:");
+                $("#textoEncriptado").val(textoDesencriptado);
+            }
+            
+            function encriptar(texto) {
+                var encriptado = texto.replace(/e/g, "enter");
+                encriptado = encriptado.replace(/i/g, "imes");
+                encriptado = encriptado.replace(/a/g, "ai");
+                encriptado = encriptado.replace(/o/g, "ober");
+                encriptado = encriptado.replace(/u/g, "ufat");
+                
+                return encriptado;
+            }
+            
+            function desencriptar(textoEncriptado) {
+                var desencriptado = textoEncriptado.replace(/enter/g, "e");
+                desencriptado = desencriptado.replace(/imes/g, "i");
+                desencriptado = desencriptado.replace(/ai/g, "a");
+                desencriptado = desencriptado.replace(/ober/g, "o");
+                desencriptado = desencriptado.replace(/ufat/g, "u");
+                
+                return desencriptado;
+            }
+            
+            $("#encriptar").click(function() {
+                encriptarTexto();
+            });
+            
+            $("#desencriptar").click(function() {
+                desencriptarTexto();
+            });
+            
+            $("#copiar").click(function() {
+                var resultado = $("#textoEncriptado").val();
+                
+                var tempInput = document.createElement("input");
+                tempInput.value = resultado;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                
+                alert("Texto copiado al portapapeles: " + resultado);
+            });
+        });
     </script>
 </head>
 <body>
-    <h1>Encriptador reto one</h1>
-    <textarea id="texto" rows="4" cols="50"></textarea><br>
-    <br/>
-    <br/>
-    <br/>
-    <button onclick="encriptarTexto()" class="btn btn-primary">Encriptar</button>
-    <br><br>
-    <div id="resultado"></div>
+    <h1>Encriptador y Desencriptador de Texto</h1>
+    
+    <div class="container">
+        <textarea id="texto" rows="4" cols="50"></textarea>
+        
+        <div class="btn-group">
+            <button id="encriptar" class="btn btn-primary">Encriptar</button>
+            <button id="desencriptar" class="btn btn-primary">Desencriptar</button>
+        </div>
+        
+        <div id="resultado"></div>
+        
+        <textarea id="textoEncriptado" rows="4" cols="50" readonly></textarea>
+        
+        <button id="copiar" class="btn btn-primary">Copiar resultado</button>
+    </div>
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
