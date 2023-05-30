@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encriptador de texto</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #a3d7ff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+        
+        button {
+            margin-top: 10px;
+        }
+        
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Encriptador de texto</h1>
+    <textarea id="texto" rows="4" cols="50"></textarea><br>
+    <button id="encriptar">Encriptar</button>
+    <br><br>
+    <div id="resultado"></div>
+</body>
+</html>

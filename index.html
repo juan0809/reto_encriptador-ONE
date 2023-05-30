@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encriptador reto one</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #a3d7ff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            color: #000000;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+        
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #000000;
+        }
+    </style>
+    <script>
+        function encriptarTexto() {
+            var texto = document.getElementById("texto").value;
+            var textoEncriptado = btoa(texto); // Utilizamos la función btoa para encriptar el texto en Base64
+            
+            document.getElementById("resultado").innerText = "Texto encriptado: " + textoEncriptado;
+        }
+    </script>
+</head>
+<body>
+    <h1>Encriptador reto one</h1>
+    <textarea id="texto" rows="4" cols="50"></textarea><br>
+    <br/>
+    <br/>
+    <br/>
+    <button onclick="encriptarTexto()" class="btn btn-primary">Encriptar</button>
+    <br><br>
+    <div id="resultado"></div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
